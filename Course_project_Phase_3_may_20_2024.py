@@ -1,5 +1,8 @@
 #Jun lum
 
+from asyncio import Condition
+
+
 def GetEmpNames():
     empname = input("Enter employee name: ")
     return empname
@@ -67,8 +70,68 @@ def PrintTotals(Emptotals):
 def WriteEmployeeInformation(employee):
     file = open("employeeinfo.txt", "a")
     file.write('{}|{}|{}|{}|{}|{}\n'.format(employee[0],employee[1],employee[2],employee[3],employee[4],employee[5]))
-    
 
+def GetFromdate():
+    valid = False
+    fromdate = ""
+    
+    while not valid:
+        fromdate = input("Enter From Date (mm/dd/yyyy): ")
+        if (len(fromdate.split('/')) != 3 and fromdate.upper() != 3 and fromdate.upper() != 'ALL'):
+            print("Invalid date format")
+    else:
+        valid = True
+        
+    return fromdate
+
+def ReadEmployeeInfomation(fromdate):
+    EmpDetailList = []
+    
+    file = open("employeeinfo.txt", "r")
+    data = file.readlines()
+    
+    condition = True
+    
+    if fromdate.upper() == 'All':
+        conition = Flase
+        
+    for employee in data:
+        employee = [x.strip() for x in employee.strip().split("|")]
+
+        if not condition:
+            EmpDetailList.append([employee[0], employee[1], employee[2], float(employee[3]), float(employee[4]), float(employee[5])])
+        else:
+            if fromdate == employee[0]:
+               EmpDetailList.append([employee[0], employee[1], employee[2], float(employee[3]), float(employee[4]), float(employee[5])])
+    return EmpDetailList    
+
+if __name__ == "__main__":
+    EmpDetailList = []
+    EmpTotals = {}
+    
+    while True:
+        empname = GetEmpNames()
+        if (empname.upper() == "END"):
+            break
+        fromdate, todate = GetDatesWorked()
+        hours = GetDatesWorked()
+        hourlyrate = GetDatesWorked()
+        taxrate = GetDatesWorked()
+        
+        print()
+        
+        EmpDetail = [fromdate, todate, empname, hours, hourlyrate, taxrate]
+        WriteEmployeeInformation(empDetail)
+    print()
+    print()
+    fromdate = GetFromdate()
+    
+    EmpDetailList = ReadEmployeeInfomation(fromdate)
+    
+    print()
+    Printtotals(Emptotals)
+    
+    
                             
           
         
