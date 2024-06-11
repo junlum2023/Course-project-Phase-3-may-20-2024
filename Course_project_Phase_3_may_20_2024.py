@@ -44,7 +44,7 @@ def printinfo(EmpDetailList):
         hourlyrate = EmpList[4]
         taxrate = EmpList[5]
       
-        grossspay, incometax, netpay = CalcTaxAndNetPay(hours, hourlyrate, taxrate)
+        GrossPay, incometax, netpay = CalcTaxAndNetPay(hours, hourlyrate, taxrate)
         print(fromdate, todate, empname, f"{hours:,.1%}", f"{hourlyrate:,.2f}", f"{GrossPay:,.2f}", f"{taxrate:,.1%}", f"{incometax:,.2f}", f"{netpay:,.2f}")
         
         TotEmployees += 1
@@ -55,7 +55,7 @@ def printinfo(EmpDetailList):
         
         EmpTotals["TotEmp"] = TotEmployees
         EmpTotals["TotHrs"] = TotHours
-        EmpTotals["TotGrossPay"] = TotGrosspay
+        EmpTotals["TotGrossPay"] = TotGrossPay
         EmpTotals["TotTax"] = TotTax
         EmpTotals["TotNetPay"] = TotNetPay
         
