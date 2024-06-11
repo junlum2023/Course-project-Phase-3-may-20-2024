@@ -1,8 +1,5 @@
 #Jun lum
 
-from asyncio import Condition
-
-
 def GetEmpNames():
     empname = input("Enter employee name: ")
     return empname
@@ -77,8 +74,9 @@ def GetFromdate():
     
     while not valid:
         fromdate = input("Enter From Date (mm/dd/yyyy): ")
-        if (len(fromdate.split('/')) != 3 and fromdate.upper() != 3 and fromdate.upper() != 'ALL'):
+        if (len(fromdate.split('/')) != 3 and fromdate.upper() != 'ALL'):
             print("Invalid date format")
+            
     else:
         valid = True
         
