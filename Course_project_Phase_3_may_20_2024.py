@@ -24,11 +24,11 @@ def GetTaxRate():
     taxrate = float(input("Enter tax rate: "))
     return taxrate
 
-def CalctaxAndNetPay(hours, hourlyrate, taxrate):
-    grosspay = hours * hourlyrate
-    incometax = grosspay * taxrate
-    netpay = grosspay - incometax 
-    return grosspay, incometax, netpay
+def CalcTaxAndNetPay(hours, hourlyrate, taxrate):
+    GrossPay = hours * hourlyrate
+    incometax = GrossPay * taxrate
+    netpay = GrossPay - incometax 
+    return GrossPay, incometax, netpay
 
 def printinfo(EmpDetailList):
     TotEmployees = 0
@@ -44,12 +44,12 @@ def printinfo(EmpDetailList):
         hourlyrate = EmpList[4]
         taxrate = EmpList[5]
       
-        groosspay, incometax, netpay = CalcTaxAndNetPay(hours, hourlyrate, taxrate)
+        grossspay, incometax, netpay = CalcTaxAndNetPay(hours, hourlyrate, taxrate)
         print(fromdate, todate, empname, f"{hours:,.1%}", f"{hourlyrate:,.2f}", f"{GrossPay:,.2f}", f"{taxrate:,.1%}", f"{incometax:,.2f}", f"{netpay:,.2f}")
         
         TotEmployees += 1
         TotHours += hours
-        TotGrossPay += grosspay
+        TotGrossPay += GrossPay
         TotTax += incometax
         TotNetPay += netpay
         
@@ -93,7 +93,7 @@ def ReadEmployeeInfomation(fromdate):
     condition = True
     
     if fromdate.upper() == 'All':
-        conition = Flase
+        condition = False
         
     for employee in data:
         employee = [x.strip() for x in employee.strip().split("|")]
@@ -121,7 +121,7 @@ if __name__ == "__main__":
         print()
         
         EmpDetail = [fromdate, todate, empname, hours, hourlyrate, taxrate]
-        WriteEmployeeInformation(empDetail)
+        WriteEmployeeInformation(EmpDetail)
     print()
     print()
     fromdate = GetFromdate()
@@ -129,7 +129,7 @@ if __name__ == "__main__":
     EmpDetailList = ReadEmployeeInfomation(fromdate)
     
     print()
-    Printtotals(Emptotals)
+    PrintTotals(EmpTotals)
     
     
                             
