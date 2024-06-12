@@ -50,11 +50,11 @@ def printinfo(EmpDetailList):
         TotTax += incometax
         TotNetPay += netpay
         
-        EmpTotals["TotEmp"] = TotEmployees
-        EmpTotals["TotHrs"] = TotHours
-        EmpTotals["TotGrossPay"] = TotGrossPay
-        EmpTotals["TotTax"] = TotTax
-        EmpTotals["TotNetPay"] = TotNetPay
+    EmpTotals["TotEmp"] = TotEmployees
+    EmpTotals["TotHrs"] = TotHours
+    EmpTotals["TotGrossPay"] = TotGrossPay
+    EmpTotals["TotTax"] = TotTax
+    EmpTotals["TotNetPay"] = TotNetPay
         
 def PrintTotals(Emptotals):
     print()
@@ -77,8 +77,8 @@ def GetFromdate():
         if (len(fromdate.split('/')) != 3 and fromdate.upper() != 'ALL'):
             print("Invalid date format")
             
-    else:
-        valid = True
+        else:
+            valid = True
         
     return fromdate
 
@@ -112,9 +112,9 @@ if __name__ == "__main__":
         if (empname.upper() == "END"):
             break
         fromdate, todate = GetDatesWorked()
-        hours = GetDatesWorked()
-        hourlyrate = GetDatesWorked()
-        taxrate = GetDatesWorked()
+        hours = GetHoursWorked()
+        hourlyrate = GetHourlyrate()
+        taxrate = GetTaxRate()
         
         print()
         
